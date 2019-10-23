@@ -1,37 +1,11 @@
-## Welcome to GitHub Pages
+## Generative Adversarial Networks to Mitigate Failures of Embedded Sensors
 
-You can use the [editor on GitHub](https://github.com/glenmeyerowitz/ECEM202A-Project/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Embedded sensors are becoming more and more common. This ubiquity also increases their use in safety critical applications, such as autonomous vehicles or aerospace applications. If a sensor experiences a failure, or if the signal from the sensor degrades, it is necessary for the system to respond appropriately and adjust its behavior. Generative Adversarial Networks (GANs) are a tool used to train Neural Networks (NNs) by allowing these two NNs to "compete." This technique has never been applied to embedded sensors to increase their robustness against common failure modes and degradations.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+This project will work to train an embedded system to respond to weather related degradations, such as rain, dust, and snow by using GANs. In this way, a system can react to an environment that it may have never experienced or been directly trained on. The system will develop a "degradation factor" (DF) to evaluate how trustworthy any given sensor input is based on the level of degradation that the sensor is experiencing. 
 
-### Markdown
+Depending on the DF that the system estimates, the system may need to enter a degraded state. For instance, if the system is an autonomous vehicle and there is a safety critical camera that is experiencing a high DF, the system may decrease its maximal operating speed and increase the following distance to other vehicles. This is a safety measure to mitigate the impact of a degradation on system safety.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Contact Us
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/glenmeyerowitz/ECEM202A-Project/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+If you have any questions or want to reach out to discuss this project, you can reach [Glen Meyerowitz](https://glenmeyerowitz.com) on [Twitter](https://twitter.com/GlenMeyerowitz) or by [email](mailto:gmeyerowitz@ucla.edu).
