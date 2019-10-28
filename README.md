@@ -12,11 +12,33 @@ Depending on the environment that the system is in, the system may need to adjus
 
 ## Project Schedule
 
+Week 5 - 
+
+Week 6 - 
+
+Week 7 - 
+
+Week 8 - 
+
+Week 9 - 
+
+Week 10 - 
+
 ## Technical Work and Methods
+
+TBD
 
 ## Future Work
 
+TBD
+
 ## References
+
+[1] Lindland, John. <i>The Seven Failure Modes: Failure Modes and Effects Analysis.</i> The Bella Group, 2007.
+
+[2] 
+
+[3] 
 
 ### Contact Us
 
