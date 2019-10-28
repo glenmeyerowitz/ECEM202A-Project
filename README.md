@@ -36,7 +36,7 @@ TBD
 
 [1] Lindland, John. <i>The Seven Failure Modes: Failure Modes and Effects Analysis.</i> The Bella Group, 2007.
 
-[2] 
+[2] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>, 2018.
 
 [3] 
 
