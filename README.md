@@ -18,7 +18,7 @@ It is reasonable to use human behavior as a baseline for how a semi-autonomous o
 
 The below chart from [4] indicates the effect that weather and lighting conditions have on vehicle speed. This general behavior is what a semi-autonomous or autonomous system should emulate.
 
-![weather-speed](https://github.com/glenmeyerowitz/ECEM202A-Project/blob/master/weather-speed.png)
+![weather-speed](weather-speed.png)
 
 Often, semi-autonomous or autonomous vehicle controls are governed by a finite state machine (FSM) which determines the operational parameters of the vehicle. For instance, some of the parameters controlled by this FSM may include maximum vehicle speed and minimum following distance to the forward vehicle. Without a reliable system to successfully identify different weather patterns, there is no way of correctly adjusting the state of the FSM to adjust vehicle parameters as weather patterns change.
 
