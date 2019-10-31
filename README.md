@@ -42,11 +42,21 @@ Week 10 - Finalize presentation and documentation for project
 
 The first step in this process will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, snow, fog, and dust. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
 
-A Neural Network (NN) will be trained once the dataset is collected. This will be a multi-label classification NN that will successfully identify the type of weather condition in each image or video. If time permits, I will be looking at multiple ways to train the NN to determine what is the best training method. The most straightforward, and the method I am already familiar with, will be training the NN on my personal computer. I will also look to train the NN on a NVIDIA Jetson Nano [6] where the 128 NVIDIA CUDA cores should offer increased performance. I am not as familiar with the Jetson Nano, so I may not be able to complete the whole project on that device.
+As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard.
+
+A Neural Network (NN) will be trained once the dataset is labeled. This will be a multi-label classification NN that will successfully identify the type of weather condition in each image or video. If time permits, I will be looking at multiple ways to train the NN to determine what is the best training method. The most straightforward, and the method I am already familiar with, will be training the NN on my personal computer. I will also look to train the NN on a NVIDIA Jetson Nano [6] where the 128 NVIDIA CUDA cores should offer increased performance. I am not as familiar with the Jetson Nano, so I may not be able to complete the whole project on that device.
 
 ![nvidia-jetson-nano](https://www.nvidia.com/content/dam/en-zz/Solutions/intelligent-machines/jetson-nano/nvidia-jetson-nano-developer-kit-2c50-d@2x.png)
 
 I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module V2 for final validation of this system. A custom environment will be created where the weather can be controlled. For simplicity, the environment will have a limited number of weather conditions including normal, rain, and fog. The Jetson Nano will be implementing the NN that has been previously trained and validated on the data sets discussed above. The video from the camera will be fed into the NN and processed in real time to output a variable which will be the weather in the chamber. Based on the characterized weather, the system will determine if it is necessary to adjust driving state for increased safety.
+
+## Project Objectives
+
+1. Create a labeled database of images and video showing a range of different weather conditions that a car may experience on the road.
+2. Train a Neural Network (NN) to correctly identify and classify new images based on the weather conditions present.
+3. Deploy the NN to an NVIDIA Jetson Nano with a Raspberry Pi Camera Module to emulate a camera on a car.
+4. Create weather conditions in a custom environment and allow the system to respond.
+5. Ensure that the system properly adjusts its internal Finite State Machine (FSM) depending on the weather conditions such that the vehicle always stays inside its Operational Design Domain (ODD) and that it operates within appropriate functional safety limits.
 
 ## Future Work
 
@@ -68,7 +78,7 @@ TBD
 
 [7] Lindland, J. <i>The Seven Failure Modes: Failure Modes and Effects Analysis</i>. The Bella Group, 2007.
 
-[6] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
+[8] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
 
 ## Contact Us
 
