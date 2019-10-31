@@ -2,9 +2,9 @@
 
 ## Introduction and Problem Statement
 
-Embedded sensors are becoming increasingly common. This ubiquity also increases their use in safety critical applications, such as autonomous vehicles or aerospace applications. If a sensor experiences a failure, or if the signal from the sensor degrades, it is necessary for the system to respond appropriately and adjust its behavior. Environmental impacts can often be the root cause of degradations or failures of embedded sensors. For instance, rain, wind, or snow can degrade the signal from a camera. Different classes of sensors have different strengths and weaknesses and thus will be susceptible to different types of failure modes and degradations.
+Embedded sensors are becoming increasingly common. This ubiquity also increases their use in safety critical applications, such as autonomous vehicles or aerospace applications. If a sensor experiences a failure, or if the signal from the sensor degrades, it is necessary for the system to respond appropriately and adjust its behavior. Environmental impacts can often be the root cause of degradations or failures of embedded sensors. For instance, rain, wind, or snow can degrade the signal from a camera. Different classes of sensors have different strengths and weaknesses and thus will be susceptible to different types of failure modes and degradations. [5]
 
-This project will work to train an embedded system to respond to weather related degradations, such as rain, dust, and snow by using a Convolutional Neural Network (CNN). The system will output a qualitative description of the environment based on the training of the sensor which will indicate what environment the sensor is experiencing.
+This project will work to train an embedded system to respond to weather related degradations, such as rain, fog, dust, and snow by using a Convolutional Neural Network (CNN). The system will output a qualitative description of the environment based on the training of the sensor which will indicate what environment the sensor is experiencing.
 
 Depending on the environment that the system is in, the system may need to adjust operating behavior. For instance, if a camera in an autonomous vehicle identifies that the vehicle is operating in rain, the system may decrease its maximal operating speed and increase the following distance from other vehicles. This is a safety measure to mitigate the impact of a degradation on system safety.
 
@@ -24,31 +24,17 @@ Often, semi-autonomous or autonomous vehicle controls are governed by a finite s
 
 There are existing systems that can determine the weather using computer vision. Tesla incorporates an “autowiper” feature which uses a fisheye camera and associated Neural Network (NN) to output a probability between 0 and 1 of whether there is moisture on the windshield. [3] However, this feature is susceptible to adversarial attacks either thru the physical world or algorithms that impact the output signal of the embedded camera itself.
 
-## Project Schedule
-
-Week 5 - Develop system functional block diagram and key components
-
-Week 6 - Outline requirements for Neural Network (NN) to recognize weather patterns
-
-Week 7 - Train NN to recognize different weather patterns
-
-Week 8 - Continue to train NN for different weather patterns and begin to develop simulator for remainder of vehicle system
-
-Week 9 - Ensure NN and system communicate properly to adjust system behavior depending on qualitative output from NN
-
-Week 10 - Finalize presentation and documentation for project
-
 ## Technical Approach and Methods
 
-The first step in this process will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, snow, fog, and dust. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
+The first step in this process will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
 
 As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard.
 
-A Neural Network (NN) will be trained once the dataset is labeled. This will be a multi-label classification NN that will successfully identify the type of weather condition in each image or video. If time permits, I will be looking at multiple ways to train the NN to determine what is the best training method. The most straightforward, and the method I am already familiar with, will be training the NN on my personal computer. I will also look to train the NN on a NVIDIA Jetson Nano [6] where the 128 NVIDIA CUDA cores should offer increased performance. I am not as familiar with the Jetson Nano, so I may not be able to complete the whole project on that device.
+A Convolutional Neural Network (CNN) will be trained once the dataset is labeled. This will be a multi-label classification CNN that will successfully identify the type of weather condition in each image or video. If time permits, I will be looking at multiple ways to train the NN to determine what is the best training method. The most straightforward, and the method I am already familiar with, will be training the NN on my personal computer. I will also look to train the CNN on a NVIDIA Jetson Nano [6] where the 128 NVIDIA CUDA cores should offer increased performance. I am not as familiar with the Jetson Nano, so I may not be able to complete the whole project on that device.
 
 ![nvidia-jetson-nano](https://www.nvidia.com/content/dam/en-zz/Solutions/intelligent-machines/jetson-nano/nvidia-jetson-nano-developer-kit-2c50-d@2x.png)
 
-I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module V2 for final validation of this system. A custom environment will be created where the weather can be controlled. For simplicity, the environment will have a limited number of weather conditions including normal, rain, and fog. The Jetson Nano will be implementing the NN that has been previously trained and validated on the data sets discussed above. The video from the camera will be fed into the NN and processed in real time to output a variable which will be the weather in the chamber. Based on the characterized weather, the system will determine if it is necessary to adjust driving state for increased safety.
+I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module V2 for final validation of this system. A custom environment will be created where the weather can be controlled. For simplicity, the environment will have a limited number of weather conditions: rain and fog. The Jetson Nano will be implementing the CNN that has been previously trained and validated on the data sets discussed above. The video from the camera will be fed into the CNN and processed in real time to output a variable which will be the weather in the chamber. Based on the characterized weather, the system will determine if it is necessary to adjust driving state for increased safety.
 
 ## Project Objectives
 
@@ -57,6 +43,20 @@ I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module
 3. Deploy the NN to an NVIDIA Jetson Nano with a Raspberry Pi Camera Module to emulate a camera on a car.
 4. Create weather conditions in a custom environment and allow the system to respond.
 5. Ensure that the system properly adjusts its internal Finite State Machine (FSM) depending on the weather conditions such that the vehicle always stays inside its Operational Design Domain (ODD) and that it operates within appropriate functional safety limits.
+
+## Project Schedule
+
+<b>Week 5</b> - Develop system functional block diagram and identify key components. Purchase any required hardware.
+
+<b>Week 6</b> - Outline requirements for Neural Network (NN) to recognize weather patterns. Assemble dataset with self-collected data and suplemented from online databases.
+
+<b>Week 7</b> - Train NN to recognize different weather patterns. Look to train on both personal computer and NVIDIA Jetson Nano.
+
+<b>Week 8</b> - Continue to train NN for different weather patterns and begin to develop simulator for remainder of vehicle system.
+
+<b>Week 9</b> - Deploy CNN to NVIDIA Jetson Nano and connect camera to validate system level communication and adjust system behavior depending on qualitative output from NN.
+
+<b>Week 10</b> - Test complete system in custom environmental chamber to validate system performance. Finalize presentation and documentation for project.
 
 ## Future Work
 
@@ -72,7 +72,7 @@ TBD
 
 [4] Jägerbrand, A.K. and Sjöbergh, J. <i>Effects of weather conditions, light conditions, and road lighting on vehicle speed.</i> Springerplus. 2016; 5: 505. Published online Apr. 2016.
 
-[5] Zang, S. et al. <i> The Impact of Adverse Weather Conditions on Autonomous Vehicles: How Rain, Snow, Fog, and Hail Affect the Performance of a Self-Driving Car</i>. IEEE Vehicular Technology Magazine, Volume: 14 , Issue: 2, June 2019.
+[5] Zang, S. et al. <i>The Impact of Adverse Weather Conditions on Autonomous Vehicles: How Rain, Snow, Fog, and Hail Affect the Performance of a Self-Driving Car</i>. IEEE Vehicular Technology Magazine, Volume: 14 , Issue: 2, June 2019.
 
 [6] NVIDIA Jetson Nano. https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/.
 
