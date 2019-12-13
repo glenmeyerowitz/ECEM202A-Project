@@ -1,5 +1,14 @@
 # Using embedded sensors to recognize weather patterns that can degrade autonomous vehicle performance
 
+## Table of Contents
+
+[Introduction](#introduction-and-problem-statement)
+[Prior Work](#prior-work)
+[Technical Approach](#technical-approach-and-methods)
+[Objectives](#project-objectives)
+[References](#references)
+[Contact Us](#contact-us)
+
 ## Introduction and Problem Statement
 
 Embedded sensors are becoming increasingly common. This ubiquity also increases their use in safety critical applications, such as autonomous vehicles or aerospace applications. If a sensor experiences a failure, or if the signal from the sensor degrades, it is necessary for the system to respond appropriately and adjust its behavior. Environmental impacts can often be the root cause of degradations or failures of embedded sensors. For instance, rain, wind, or snow can degrade the signal from a camera. Different classes of sensors have different strengths and weaknesses and thus will be susceptible to different types of failure modes and degradations. [5]
