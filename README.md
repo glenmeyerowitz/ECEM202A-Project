@@ -2,12 +2,12 @@
 
 ## Table of Contents
 
-[Introduction](#introduction-and-problem-statement)
-[Prior Work](#prior-work)
-[Technical Approach](#technical-approach-and-methods)
-[Objectives](#project-objectives)
-[References](#references)
-[Contact Us](#contact-us)
+[Introduction](#introduction-and-problem-statement) <br />
+[Prior Work](#prior-work) <br />
+[Technical Approach](#technical-approach-and-methods) <br />
+[Objectives](#project-objectives) <br />
+[References](#references) <br />
+[Contact Us](#contact-us) <br />
 
 ## Introduction and Problem Statement
 
