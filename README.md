@@ -2,14 +2,39 @@
 
 ## Table of Contents
 
-[Introduction](#introduction-and-problem-statement) <br />
+[Introduction](#introduction-to-autonomous-vehicles-and-levels-of-automation) <br />
+[Vehicle Automation](#vehicle-automation) <br />
 [Prior Work](#prior-work) <br />
-[Technical Approach](#technical-approach-and-methods) <br />
 [Objectives](#project-objectives) <br />
+[Technical Approaches](#technical-approach-and-methods) <br />
+[Results](#results) <br />
+[Implementation Weaknesses](#implementation-weaknesses) <br />
+[Future Work](#future-work) <br />
 [References](#references) <br />
 [Contact Us](#contact-us) <br />
+[Disclaimer](#disclaimer) <br />
 
-## Introduction and Problem Statement
+## Introduction to Autonomous Vehicles and Levels of Automation
+
+In 2014, SAE (the Society of Automotive Engineers) released J3016 which introduced a new concept – levels of driving automation. These range from Level 0, complete human control, to Level 5, complete automation control. The six levels differentiate varying levels of control as automation systems become increasingly complex and able to deal with more advanced situations and perform safely. 
+
+![SAE-J3016](driving-automation-levels.png)
+
+Level 0, 1, and 2 are essentially human operated vehicles with automation as a backup. Systems such as Automatic Emergency Braking (AEB) are an example of a use of automation technology to improve safety when a human driver fails to react properly. Levels 3, 4, and 5 are essentially the reverse. In these systems, the automated system is supposed to be in complete control and the human is the backup in case something fails. For Level 5, the human driver should be completely out of the loop when the vehicle is operating.
+
+Throughout the scope of this work, we will be focusing on Level 4 autonomous systems. These are systems that are intended to operate inside a specific Operational Design Domain (ODD). An ODD is a limitation that is placed on the operation of an autonomous system. In short, the system can operate autonomously within a given ODD and it should be under human control when it is outside of that ODD. An ODD can be defined by the following factors:
+
+1. Location (geo-fenced);
+2. Geography;
+3. Time of day;
+4. Weather; and
+5. Other factors that may impact the system.
+
+Specific implementations of these depend on the design and development platform but they can include only operating in a physical location, such as a parking lot; only operating on flat terrain to avoid steep inclines; only operating in a given set of hours to avoid nighttime driving; only operating in sunny weather to avoid rain or snow; and more.
+
+Based on the decisions made by autonomous vehicle manufacturers to choose an ODD for their vehicle, that leads us to understand that the true question for autonomous vehicles is not when they will be deployed, but where they will be deployed. This is often a question of unit economics, and how can a company develop a technology with a sufficiently simple ODD that the system can operate safety, but with a sufficiently large enough ODD that the high costs of developing an autonomous vehicle can be recovered.
+
+## Vehicle Automation
 
 Embedded sensors are becoming increasingly common. This ubiquity also increases their use in safety critical applications, such as autonomous vehicles or aerospace applications. If a sensor experiences a failure, or if the signal from the sensor degrades, it is necessary for the system to respond appropriately and adjust its behavior. Environmental impacts can often be the root cause of degradations or failures of embedded sensors. For instance, rain, wind, or snow can degrade the signal from a camera. Different classes of sensors have different strengths and weaknesses and thus will be susceptible to different types of failure modes and degradations. [5]
 
@@ -53,19 +78,9 @@ I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module
 4. Create weather conditions in a custom environment and allow the system to respond.
 5. Ensure that the system properly adjusts its internal Finite State Machine (FSM) depending on the weather conditions such that the vehicle always stays inside its Operational Design Domain (ODD) and that it operates within appropriate functional safety limits.
 
-## Project Schedule
+## Implementation Weaknesses
 
-<b>Week 5</b> - Develop system functional block diagram and identify key components. Purchase any required hardware.
-
-<b>Week 6</b> - Outline requirements for Neural Network (NN) to recognize weather patterns. Assemble dataset with self-collected data and suplemented from online databases.
-
-<b>Week 7</b> - Train NN to recognize different weather patterns. Look to train on both personal computer and NVIDIA Jetson Nano.
-
-<b>Week 8</b> - Continue to train NN for different weather patterns and begin to develop simulator for remainder of vehicle system.
-
-<b>Week 9</b> - Deploy CNN to NVIDIA Jetson Nano and connect camera to validate system level communication and adjust system behavior depending on qualitative output from NN.
-
-<b>Week 10</b> - Test complete system in custom environmental chamber to validate system performance. Finalize presentation and documentation for project.
+Tesla autowiper example.
 
 ## Future Work
 
@@ -83,12 +98,19 @@ TBD
 
 [5] Zang, S. et al. <i>The Impact of Adverse Weather Conditions on Autonomous Vehicles: How Rain, Snow, Fog, and Hail Affect the Performance of a Self-Driving Car</i>. IEEE Vehicular Technology Magazine, Volume: 14 , Issue: 2, June 2019.
 
-[6] NVIDIA Jetson Nano. https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/.
+[6] “SAE International Releases Updated Visual Chart for Its “Levels of Driving Automation” Standard for
+Self Driving Vehicles.” Accessed on 12/6/2019.
 
-[7] Lindland, J. <i>The Seven Failure Modes: Failure Modes and Effects Analysis</i>. The Bella Group, 2007.
+[7] NVIDIA Jetson Nano. https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/.
 
-[8] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
+[8] Lindland, J. <i>The Seven Failure Modes: Failure Modes and Effects Analysis</i>. The Bella Group, 2007.
+
+[9] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
 
 ## Contact Us
 
 If you have any questions or want to reach out to discuss this project, you can reach [Glen Meyerowitz](https://glenmeyerowitz.com) on [Twitter](https://twitter.com/GlenMeyerowitz) or by [email](mailto:gmeyerowitz@ucla.edu).
+
+## Disclaimer
+
+This report reflects only the present considerations and views of the author and do not necessarily reflect those of any firms or organizations with which the author is or has been affiliated.
