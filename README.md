@@ -82,6 +82,8 @@ I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module
 
 The initial results for this project are very positive. The below video shows the labels produced for a ten second clip of real-world data that was taken on I-405 near UCLA campus.
 
+![test-video]( images/rain-label.png)](https://youtu.be/M_zU4colaD4)
+
 There are a few interesting elements to note about this video. First is that in the first few frames, the images are incorrectly classified as “snow.” As was discussed in the technical approach above, we used a smoothing approach that averages the labels over 128 previous frames. Thus, the initial frames have a higher likelihood of an incorrect label due to the lack of previous labels for an average. This problem resolves itself after a number of frames. 
 
 ![snow-label](images/snow-label.png)
