@@ -18,7 +18,7 @@
 
 In 2014, SAE (the Society of Automotive Engineers) released J3016 which introduced a new concept – levels of driving automation. These range from Level 0, complete human control, to Level 5, complete automation control. The six levels differentiate varying levels of control as automation systems become increasingly complex and able to deal with more advanced situations and perform safely. 
 
-![SAE-J3016](driving-automation-levels.png)
+![SAE-J3016](images/driving-automation-levels.png)
 
 Level 0, 1, and 2 are essentially human operated vehicles with automation as a backup. Systems such as Automatic Emergency Braking (AEB) are an example of a use of automation technology to improve safety when a human driver fails to react properly. Levels 3, 4, and 5 are essentially the reverse. In these systems, the automated system is supposed to be in complete control and the human is the backup in case something fails. For Level 5, the human driver should be completely out of the loop when the vehicle is operating.
 
@@ -52,7 +52,7 @@ It is reasonable to use human behavior as a baseline for how a semi-autonomous o
 
 The below chart from [4] indicates the effect that weather and lighting conditions have on vehicle speed. This general behavior is what a semi-autonomous or autonomous system should emulate.
 
-![weather-speed](weather-speed.png)
+![weather-speed](images/weather-speed.png)
 
 Often, semi-autonomous or autonomous vehicle controls are governed by a finite state machine (FSM) which determines the operational parameters of the vehicle. For instance, some of the parameters controlled by this FSM may include maximum vehicle speed and minimum following distance to the forward vehicle. Without a reliable system to successfully identify different weather patterns, there is no way of correctly adjusting the state of the FSM to adjust vehicle parameters as weather patterns change.
 
@@ -80,7 +80,21 @@ I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module
 
 ## Results
 
-Results go here…
+The initial results for this project are very positive. The below video shows the labels produced for a ten second clip of real-world data that was taken on I-405 near UCLA campus.
+
+There are a few interesting elements to note about this video. First is that in the first few frames, the images are incorrectly classified as “snow.” As was discussed in the technical approach above, we used a smoothing approach that averages the labels over 128 previous frames. Thus, the initial frames have a higher likelihood of an incorrect label due to the lack of previous labels for an average. This problem resolves itself after a number of frames. 
+
+![snow-label](images/snow-label.png)
+
+It is also interesting that when the windshield wipers go across the screen, the classifier determines that the frame is at “night.” While this is also an incorrect label, it is easy to understand how the classifier made this mistake due to the fact that all of the nighttime images on which the classifier was trained were dark. When the windshield wipers go across the camera field of view, it temporarily becomes dark which is similar to the nighttime training data.
+	
+![night-label](images/night-label.png)
+
+The last few seconds of this clip show the correct label on all the frames. This indicates that the average is working and the classification system has correctly determined that this short clip was taken while it was “raining” outside.
+
+![rain-label](images/rain-label.png)
+
+The classification can be fed back into a state function representing an autonomous vehicle and control parameters such as maximum speed, following distance, and minimum turning radius at a given speed. This Finite State Machine (FSM) was not developed for this project due to time limitations.
 
 ## Implementation Weaknesses
 
@@ -88,7 +102,7 @@ As far as is known, the only existing implementation of a neural network to dete
 
 In early 2019, researchers at Tencent Keen Security Lab demonstrated that the autowiper feature is susceptible to malicious attacks. Similar to other neural networks, the neural network at the heart of the autowiper feature is a black box. There is no definitive way to understand how the system outputs a given value and the decision making cannot be audited well.
 
-![autowiper](autowiper.png)
+![autowiper](images/autowiper.png)
 
 The Tencent team was able to create a seemingly garbage image that does not represent anything to the human eye. However, when this image is placed on a screen in front of a Tesla with the autowiper feature enabled, the system will respond and turn on the windshield wipers.
 
