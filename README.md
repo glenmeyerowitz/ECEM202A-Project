@@ -85,11 +85,15 @@ There are existing systems that can determine the weather using computer vision.
 
 Much of the code used for this project was adapted from a tutorial put together by Dr. Adrian Rosebrock [7]. In this tutorial, Dr. Rosebrock uses a trained CNN to identify natural disasters using a pretrained VGG16 network and adding additional training images for the specific area of interest. I was able to develop a custom dataset and use much of the same code to train a VGG16 network on a new dataset and then perform inferences and label video data. The efficient use of existing code repositories allowed me to best utilize my time on the novel portions of this project.
 
+VGG16 is a well known Convolutional Neural Network that has had large success on classification for large databases. It operates by resizing images to 224 x 224 x 3 and then perform multiple convolutional layers to perform inferences on the image. The main downside of this implementation is that VGG is a huge network and thus is extremely computation intensive to train and to perform inference. The below figure shows the various layers of VGG16.
+
+![VGG16](images/vgg16.png)
+
 The first step in this process was to create a custom dataset of the training images for the VGG16 CNN. I was able to create a script that scraped these images from Google Images and bulk downloaded a set of images that are classified as “rain,” “snow,” “dusk,” and “nighttime.” All images should be of road conditions where the ambient conditions match the label. 
 
 ![dataset](images/dataset.png)
 
-The first step in training was to calculate the learning rate for the system. A plot of the loss for various learning rates is shown below. Based on this, it was decided to use a learning rate between 10^-5 and 10^-3 for the training. A higher learning rate would result in overfitting, while a lower learning rate would have too high of a loss value.
+Before one can begin to train on a real dataset, it is best to find the appropriate range of learning rates to minimize the loss when training. A plot of the loss for various learning rates is shown below. Based on this, it was decided to use a learning rate between 10^-5 and 10^-3 for the training. A higher learning rate would result in overfitting, while a lower learning rate would have too high of a loss value.
 
 ![learning-rate](images/learning_rate.png)
 
