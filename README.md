@@ -5,7 +5,7 @@
 [Introduction](#introduction-to-autonomous-vehicles-and-levels-of-automation) <br />
 [Vehicle Automation](#vehicle-automation) <br />
 [Prior Work](#prior-work) <br />
-[Objectives](#project-objectives) <br />
+[Project Objectives](#project-objectives) <br />
 [Technical Approaches](#technical-approach-and-methods) <br />
 [Results](#results) <br />
 [Implementation Weaknesses](#implementation-weaknesses) <br />
@@ -58,6 +58,14 @@ Often, semi-autonomous or autonomous vehicle controls are governed by a finite s
 
 There are existing systems that can determine the weather using computer vision. Tesla incorporates an “autowiper” feature which uses a fisheye camera and associated Neural Network (NN) to output a probability between 0 and 1 of whether there is moisture on the windshield. [3] However, this feature is susceptible to adversarial attacks either thru the physical world or algorithms that impact the output signal of the embedded camera itself.
 
+## Project Objectives
+
+1. Create a labeled database of images and video showing a range of different weather conditions that a car may experience on the road.
+2. Train a Neural Network (NN) to correctly identify and classify new images based on the weather conditions present.
+3. Deploy the NN to an NVIDIA Jetson Nano with a Raspberry Pi Camera Module to emulate a camera on a car.
+4. Create weather conditions in a custom environment and allow the system to respond.
+5. Ensure that the system properly adjusts its internal Finite State Machine (FSM) depending on the weather conditions such that the vehicle always stays inside its Operational Design Domain (ODD) and that it operates within appropriate functional safety limits.
+
 ## Technical Approach and Methods
 
 The first step in this process will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
@@ -70,21 +78,27 @@ A Convolutional Neural Network (CNN) will be trained once the dataset is labeled
 
 I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module V2 for final validation of this system. A custom environment will be created where the weather can be controlled. For simplicity, the environment will have a limited number of weather conditions: rain and fog. The Jetson Nano will be implementing the CNN that has been previously trained and validated on the data sets discussed above. The video from the camera will be fed into the CNN and processed in real time to output a variable which will be the weather in the chamber. Based on the characterized weather, the system will determine if it is necessary to adjust driving state for increased safety.
 
-## Project Objectives
+## Results
 
-1. Create a labeled database of images and video showing a range of different weather conditions that a car may experience on the road.
-2. Train a Neural Network (NN) to correctly identify and classify new images based on the weather conditions present.
-3. Deploy the NN to an NVIDIA Jetson Nano with a Raspberry Pi Camera Module to emulate a camera on a car.
-4. Create weather conditions in a custom environment and allow the system to respond.
-5. Ensure that the system properly adjusts its internal Finite State Machine (FSM) depending on the weather conditions such that the vehicle always stays inside its Operational Design Domain (ODD) and that it operates within appropriate functional safety limits.
+Results go here…
 
 ## Implementation Weaknesses
 
-Tesla autowiper example.
+As far as is known, the only existing implementation of a neural network to detect weather is found in Tesla ‘autowipers.’ Tesla uses the front facing camera to detect if it is raining, and if a neural network indicates that it is raining the system will turn on windshield wipers. Standard rain sensors use the principal of total internal reflection to detect moisture by shining an infrared light on the windshield and detecting whether it is reflected or not due to moisture. The Tesla implementation, however, uses a camera for the purpose of detecting rain. It is important to note that that the Tesla autowiper feature only can detect rain, and not other weather patterns, and it is not expected that the autowiper output feeds into vehicle controls for safety and planning.
+
+In early 2019, researchers at Tencent Keen Security Lab demonstrated that the autowiper feature is susceptible to malicious attacks. Similar to other neural networks, the neural network at the heart of the autowiper feature is a black box. There is no definitive way to understand how the system outputs a given value and the decision making cannot be audited well.
+
+![autowiper](autowiper.png)
+
+The Tencent team was able to create a seemingly garbage image that does not represent anything to the human eye. However, when this image is placed on a screen in front of a Tesla with the autowiper feature enabled, the system will respond and turn on the windshield wipers.
+
+The ability of malicious actors to essentially hack the neural network represents a threat and weakness to any system that is developed with neural networks at the core, such as what was presented in this work. While the results are reliable and useful when the system is within nominal operational bounds, for safety critical systems that operate in autonomous vehicles that may not be sufficient to meet all safety requirements.
 
 ## Future Work
 
-TBD
+This work focused on the study of weather detection using single, forward facing camera. One exciting area for future work is to incorporate sensor fusion to increase the reliability of the methods presented here. We acknowledge there are inherent weaknesses in detecting weather patterns that can degrade a sensor with that same type of sensor. The addition of a radar or lidar unit would improve the ability of the system proposed here to more robustly detect weather patterns.
+
+In addition, I would be interested in expanding the work to include deployment on an embedded system on a vehicle. Due to time limitations of this project, and my personal lack of familiarity with the NVIDIA Jetson Nano developer board, I was not able to successfully deploy the trained network to identify weather patterns on-board. With some additional time, this is a challenge that should be easy to overcome, and a full system can be implemented and presented.
 
 ## References
 
