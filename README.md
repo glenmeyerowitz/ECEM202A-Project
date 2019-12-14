@@ -19,7 +19,7 @@
 
 The below link is a video presentation of this topic that was given on Monday, December 9, 2019.
 
-[![presentation-video](https://img.youtube.com/vi/ka1vr5j61Hg/0.jpg)]( https://youtu.be/ka1vr5j61Hg)
+[![presentation-video](https://img.youtube.com/vi/4mk1347W3FM/0.jpg)]( https://youtu.be/4mk1347W3FM)
 
 ## Introduction to Autonomous Vehicles and Levels of Automation
 
