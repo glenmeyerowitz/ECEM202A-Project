@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+[Presentation](#presentation) <br />
 [Introduction](#introduction-to-autonomous-vehicles-and-levels-of-automation) <br />
 [Vehicle Automation](#vehicle-automation) <br />
 [Prior Work](#prior-work) <br />
@@ -13,6 +14,12 @@
 [References](#references) <br />
 [Contact Us](#contact-us) <br />
 [Disclaimer](#disclaimer) <br />
+
+## Presentation
+
+The below link is a video presentation of this topic that was given on Monday, December 9, 2019.
+
+[![presentation-video](https://img.youtube.com/vi/VIDEOURL/0.jpg)](insert-link-here)
 
 ## Introduction to Autonomous Vehicles and Levels of Automation
 
@@ -41,6 +48,10 @@ Embedded sensors are becoming increasingly common. This ubiquity also increases 
 This project will work to train an embedded system to respond to weather related degradations, such as rain, fog, dust, and snow by using a Convolutional Neural Network (CNN). The system will output a qualitative description of the environment based on the training of the sensor which will indicate what environment the sensor is experiencing.
 
 Depending on the environment that the system is in, the system may need to adjust operating behavior. For instance, if a camera in an autonomous vehicle identifies that the vehicle is operating in rain, the system may decrease its maximal operating speed and increase the following distance from other vehicles. This is a safety measure to mitigate the impact of a degradation on system safety.
+
+It is important to note that different types of sensors will experience failures and degradations due to changing weather conditions in different ways. The below chart shows some of the ways, to the first order, that sensors may degrade or fail as ambient conditions change. While this chart is useful to give an understanding of the relationship between sensors and weather, it is not enough. The magnitude of a weather event is also very important as a light rain will have a very different effect on a camera than a thunderstorm.
+
+![weather-degredations](images/weather-degredation-chart.png)
 
 ## Prior Work
 
@@ -144,3 +155,4 @@ If you have any questions or want to reach out to discuss this project, you can 
 ## Disclaimer
 
 This report reflects only the present considerations and views of the author and do not necessarily reflect those of any firms or organizations with which the author is or has been affiliated.
+
