@@ -87,10 +87,6 @@ Much of the code used for this project was adapted from a tutorial put together 
 
 The first step in this process was to create a custom dataset of the training images for the VGG16 CNN. I was able to create a script that scraped these images from Google Images and bulk downloaded a set of images that are classified as “rain,” “snow,” “dusk,” and “nighttime.” All images should be of road conditions where the ambient conditions match the label. 
 
-will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
-
-As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard. I was able to train the CNN using a dataset of about 1300 images that were split between a training and validation set, 70% and 30% of the total dataset each. 
-
 ![dataset](images/dataset.png)
 
 The first step in training was to calculate the learning rate for the system. A plot of the loss for various learning rates is shown below. Based on this, it was decided to use a learning rate between 10^-5 and 10^-3 for the training. A higher learning rate would result in overfitting, while a lower learning rate would have too high of a loss value.
