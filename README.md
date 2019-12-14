@@ -87,7 +87,7 @@ Much of the code used for this project was adapted from a tutorial put together 
 
 VGG16 is a well known Convolutional Neural Network that has had large success on classification for large databases. It operates by resizing images to 224 x 224 x 3 and then perform multiple convolutional layers to perform inferences on the image. The main downside of this implementation is that VGG is a huge network and thus is extremely computation intensive to train and to perform inference. The below figure shows the various layers of VGG16.
 
-![VGG16](images/vgg16.png)
+![VGG16](images/VGG16.png)
 
 The first step in this process was to create a custom dataset of the training images for the VGG16 CNN. I was able to create a script that scraped these images from Google Images and bulk downloaded a set of images that are classified as “rain,” “snow,” “dusk,” and “nighttime.” All images should be of road conditions where the ambient conditions match the label. 
 
