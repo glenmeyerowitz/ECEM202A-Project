@@ -19,7 +19,7 @@
 
 The below link is a video presentation of this topic that was given on Monday, December 9, 2019.
 
-[![presentation-video](https://img.youtube.com/vi/VIDEOURL/0.jpg)](insert-link-here)
+[![presentation-video](https://img.youtube.com/vi/ka1vr5j61Hg/0.jpg)]( https://youtu.be/ka1vr5j61Hg)
 
 ## Introduction to Autonomous Vehicles and Levels of Automation
 
@@ -79,7 +79,11 @@ There are existing systems that can determine the weather using computer vision.
 
 ## Technical Approach and Methods
 
-The first step in this process will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
+Much of the code used for this project was adapted from a tutorial put together by Dr. Adrian Rosebrock [7]. In this tutorial, Dr. Rosebrock uses a trained CNN to identify natural disasters using a pretrained VGG16 network and adding additional training images for the specific area of interest. I was able to develop a custom dataset and use much of the same code to train a VGG16 network on a new dataset and then perform inferences and label video data. The efficient use of existing code repositories allowed me to best utilize my time on the novel portions of this project.
+
+The first step in this process was to create a custom dataset of the training images for the VGG16 CNN. I was able to create a script that scraped these images from Google Images and bulk downloaded a set of images that are classified as “rain,” “snow,” “dusk,” and “nighttime.” All images should be of road conditions where the ambient conditions match the label. 
+
+will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
 
 As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard.
 
@@ -142,11 +146,13 @@ In addition, I would be interested in expanding the work to include deployment o
 [6] “SAE International Releases Updated Visual Chart for Its “Levels of Driving Automation” Standard for
 Self Driving Vehicles.” Accessed on 12/6/2019.
 
-[7] NVIDIA Jetson Nano. https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/.
+[7] Rosebrock, Adrian. <i> Detecting Natural Disasters with Keras and Deep Learning. </i> https://www.pyimagesearch.com/2019/11/11/detecting-natural-disasters-with-keras-and-deep-learning/. Accessed on November 20, 2019.
 
-[8] Lindland, J. <i>The Seven Failure Modes: Failure Modes and Effects Analysis</i>. The Bella Group, 2007.
+[8] NVIDIA Jetson Nano. https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-nano/.
 
-[9] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
+[9] Lindland, J. <i>The Seven Failure Modes: Failure Modes and Effects Analysis</i>. The Bella Group, 2007.
+
+[10] ISO 26262 (all parts), <i>Road vehicles — Functional safety</i>. 2018.
 
 ## Contact Us
 
