@@ -21,6 +21,10 @@ The below link is a video presentation of this topic that was given on Monday, D
 
 [![presentation-video](https://img.youtube.com/vi/4mk1347W3FM/0.jpg)]( https://youtu.be/4mk1347W3FM)
 
+The datasets that were used for training, validation, and test are located on a UCLA Google Drive, with the link below:
+ 
+https://drive.google.com/open?id=1PXNgGudmmuYU-yl3vWjm_E5i0HcE6_CH
+
 ## Introduction to Autonomous Vehicles and Levels of Automation
 
 In 2014, SAE (the Society of Automotive Engineers) released J3016 which introduced a new concept – levels of driving automation. These range from Level 0, complete human control, to Level 5, complete automation control. The six levels differentiate varying levels of control as automation systems become increasingly complex and able to deal with more advanced situations and perform safely. 
