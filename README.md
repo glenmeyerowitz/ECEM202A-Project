@@ -89,13 +89,17 @@ The first step in this process was to create a custom dataset of the training im
 
 will be to develop a dataset of video and images of a variety of weather conditions that may be experienced when driving. These include rain, fog, dust, and snow. Wherever possible, I would like to collect this data by temporarily mounting a camera on my car and driving in real-world conditions. However, it may not be possible to obtain images of all desired weather conditions in and around Los Angeles so the dataset will most likely need to be supplemented with additional images from online databases. All images will be scaled and sized appropriately to ensure compatibility with the desired camera.
 
-As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard.
+As necessary, I will label the dataset for the supervised learning algorithm after it is collected. Some sources of data may come labeled depending on the database, and I will verify a subset of the labels to ensure they match with my labeling standard. I was able to train the CNN using a dataset of about 1300 images that were split between a training and validation set, 70% and 30% of the total dataset each. 
 
-A Convolutional Neural Network (CNN) will be trained once the dataset is labeled. This will be a multi-label classification CNN that will successfully identify the type of weather condition in each image or video. If time permits, I will be looking at multiple ways to train the NN to determine what is the best training method. The most straightforward, and the method I am already familiar with, will be training the NN on my personal computer. I will also look to train the CNN on a NVIDIA Jetson Nano [6] where the 128 NVIDIA CUDA cores should offer increased performance. I am not as familiar with the Jetson Nano, so I may not be able to complete the whole project on that device.
+![dataset](images/dataset.png)
 
-![nvidia-jetson-nano](https://www.nvidia.com/content/dam/en-zz/Solutions/intelligent-machines/jetson-nano/nvidia-jetson-nano-developer-kit-2c50-d@2x.png)
+The first step in training was to calculate the learning rate for the system. A plot of the loss for various learning rates is shown below. Based on this, it was decided to use a learning rate between 10^-5 and 10^-3 for the training. A higher learning rate would result in overfitting, while a lower learning rate would have too high of a loss value.
 
-I plan to use a NVIDIA Jetson Nano and an 8 Megapixel Raspberry Pi Camera Module V2 for final validation of this system. A custom environment will be created where the weather can be controlled. For simplicity, the environment will have a limited number of weather conditions: rain and fog. The Jetson Nano will be implementing the CNN that has been previously trained and validated on the data sets discussed above. The video from the camera will be fed into the CNN and processed in real time to output a variable which will be the weather in the chamber. Based on the characterized weather, the system will determine if it is necessary to adjust driving state for increased safety.
+![learning-rate](images/learning_rate.png)
+
+Finally, I was able to train the CNN on the data. I achieved an accuracy of around 80% on both the training and validation data. While this was lower than the desired accuracy I was initially targeting, the model gave very good results on real-world data that I collected. For future work, it is recommended to prune the image dataset for training to remove any erroneous images, and to increase the size of the training data by going beyond Google Image results.
+
+![loss](images/loss.png)
 
 ## Results
 
